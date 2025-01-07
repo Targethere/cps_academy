@@ -214,10 +214,6 @@ void GameBoard::init(int &x, int &y, int delay = 0) {
   fill(board.begin(), board.end(), string(width, GameBoard::WALL));
 }
 
-
-/// @brief
-/// @param gb
-/// @param p
 void setHandlers(GameBoard &gb, Cell &p) {
   gb.setInputHandler(VK_UP, [&p, &gb]() {
     if (p.y - 1 < 1 or gb.get(p.x, p.y - 1) == GameBoard::WALL) return false;
