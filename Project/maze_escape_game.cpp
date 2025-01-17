@@ -186,12 +186,11 @@ int GameBoard::shortestPath(Cell src, Cell dest) {  // BFS
 }
 
 void GameBoard::init(int &x, int &y, int delay = 0) {
-
   generateMaze();
 
   int destX = width - 2, destY = height - 2; // destination coordinates
-  set(x, y, GameBoard::PLAYER); // place player
-  set(destX, destY, GameBoard::EXIT); // set destination/exit
+  set(x, y, GameBoard::PLAYER);             // place player
+  set(destX, destY, GameBoard::EXIT);       // set destination/exit
 
   int moves = shortestPath({x, y}, {destX, destY});
   while (!gameover) {
@@ -200,11 +199,12 @@ void GameBoard::init(int &x, int &y, int delay = 0) {
     print();
     Sleep(delay);
     if (moves == 0) {
-      if (x != destX or y != destY) {
+      if (x != destX || y != destY) {
         cout << "Game Over! You ran out of moves." << endl;
       } else {
         cout << "Congratulations! You won!" << endl;
       }
+      cout << "Press any key to exit..." << endl;
       return;
     }
     int key = readinput();
